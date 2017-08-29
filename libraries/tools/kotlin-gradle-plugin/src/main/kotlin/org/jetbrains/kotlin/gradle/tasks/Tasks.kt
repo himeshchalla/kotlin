@@ -457,11 +457,13 @@ open class Kotlin2JsCompile() : AbstractKotlinCompile<K2JSCompilerArguments>(), 
 
         args.friendModules = friendDependency
 
-        args.sourceMapSourceRoots = source.orEmpty()
-                .asSequence()
-                .filterIsInstance<SourceDirectorySet>()
-                .flatMap { it.srcDirs.asSequence() }
-                .joinToString(File.pathSeparator) { it.absolutePath }
+        if (args.sourceMapBaseDirs == null && !args.sourceMapPrefix.isNullOrEmpty()) {
+            args.sourceMapBaseDirs = source.orEmpty()
+                    .asSequence()
+                    .filterIsInstance<SourceDirectorySet>()
+                    .flatMap { it.srcDirs.asSequence() }
+                    .joinToString(File.pathSeparator) { it.absolutePath }
+        }
 
         logger.kotlinDebug("compiling with args ${ArgumentUtils.convertArgumentsToStringList(args)}")
 
