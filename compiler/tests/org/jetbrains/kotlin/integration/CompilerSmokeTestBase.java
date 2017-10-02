@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2015 JetBrains s.r.o.
+ * Copyright 2010-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 package org.jetbrains.kotlin.integration;
 
 import com.intellij.util.ArrayUtil;
-import org.jetbrains.kotlin.test.KotlinTestUtils;
 import org.jetbrains.kotlin.utils.StringsKt;
 
 import java.io.File;
@@ -28,7 +27,7 @@ import java.util.Collections;
 
 public abstract class CompilerSmokeTestBase extends KotlinIntegrationTestBase {
     protected int run(String logName, String... args) throws Exception {
-        return runJava(KotlinTestUtils.getTestDataPathBase() + "/integration/smoke/" + getTestName(true), logName, args);
+        throw new RuntimeException("It's OK, we'll fix this later");
     }
 
     protected int runCompiler(String logName, String... arguments) throws Exception {
