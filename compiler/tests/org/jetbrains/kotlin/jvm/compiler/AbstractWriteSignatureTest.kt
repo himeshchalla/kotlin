@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 JetBrains s.r.o.
+ * Copyright 2010-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package org.jetbrains.kotlin.jvm.compiler
 
 import com.google.common.io.Closeables
 import com.google.common.io.Files
-import com.intellij.openapi.util.Disposer
 import com.intellij.openapi.util.io.FileUtil
 import org.jetbrains.kotlin.cli.jvm.compiler.KotlinCoreEnvironment
 import org.jetbrains.kotlin.codegen.GenerationUtils
@@ -61,7 +60,7 @@ abstract class AbstractWriteSignatureTest : TestCaseWithTmpdir() {
 
         val fileFactory = GenerationUtils.compileFileTo(psiFile, environment!!, tmpdir)
 
-        Disposer.dispose(myTestRootDisposable)
+//        Disposer.dispose(myTestRootDisposable)
 
         val expectations = parseExpectations(ktFile)
         try {
